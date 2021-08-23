@@ -52,7 +52,7 @@ async function addItem(header, data) {
     try {
       const response = await notion.pages.create(request);
       console.log(response);
-      console.log("Success! Entry added.");
+      console.log("Success! Entry " + dataField[0] + " was added.");
     } catch (error) {
       console.error(error.body);
     }
@@ -60,9 +60,6 @@ async function addItem(header, data) {
 
 }
 
-async function main() {
-  const args = process.argv.slice(2)
-  const [header, data] = await readCSV(args[0])
-  addItem(header, data)
-}
-main()
+const args = process.argv.slice(2)
+const [header, data] = await readCSV(args[0])
+addItem(header, data)
